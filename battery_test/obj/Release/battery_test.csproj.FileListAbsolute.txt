@@ -1,0 +1,10 @@
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\bin\Release\cBattery v0.1.exe.config
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\bin\Release\cBattery v0.1.exe
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\bin\Release\cBattery v0.1.pdb
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Release\battery_test.csprojAssemblyReference.cache
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Release\cbattery.Configurator.resources
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Release\cbattery.Properties.Resources.resources
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Release\battery_test.csproj.GenerateResource.cache
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Release\battery_test.csproj.CoreCompileInputs.cache
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Release\cBattery v0.1.exe
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Release\cBattery v0.1.pdb
