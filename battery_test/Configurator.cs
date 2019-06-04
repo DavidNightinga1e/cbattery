@@ -1,34 +1,59 @@
 ﻿using System;
+using System.CodeDom;
+using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace cbattery
 {
     public partial class Configurator : Form
     {
+        private readonly UserData _userData;
+        private readonly BatteryStatus _batteryStatus;
         private readonly IconManager _manager;
         private int _currentSelected;
-        
+        private int _lastPercent;
+
         public Configurator()
         {
             InitializeComponent();
-            var formatter = new BinaryFormatter();
+            var formatter = new JsonSerializer();
             try
             {
-                using (var fs = new FileStream("manager_data", FileMode.Open))
-                    _manager = (IconManager) formatter.Deserialize(fs);
+                using (var fs = new FileStream("UserData", FileMode.Open))
+                {
+                    var sr = new StreamReader(fs);
+                    _userData = JsonConvert.DeserializeObject<UserData>(sr.ReadToEnd());
+                    sr.Close();
+                }
             }
             catch
             {
-                // ignored
+                _userData = new UserData();
             }
 
-            if (_manager == null)
-                _manager = new IconManager();
+            _batteryStatus = new BatteryStatus();
+            _manager = _userData.IconManager;
+            UpdateChecks();
             UpdateListOfStints();
             Timer.Enabled = true;
+            _batteryStatus.Update();
+            _lastPercent = 101;
+        }
+
+        private void UpdateChecks()
+        {
+            var checks = _userData.TrayTextChecks;
+            CheckP.Checked = checks.P;
+            CheckC.Checked = checks.C;
+            CheckV.Checked = checks.V;
+            CheckW.Checked = checks.W;
+            CheckD.Checked = checks.D;
+            CheckT.Checked = checks.T;
+            CheckS.Checked = checks.S;
         }
 
         private void UpdateListOfStints()
@@ -51,6 +76,7 @@ namespace cbattery
                 var selected = ListOfStints.SelectedIndex;
                 _manager.ChangeStintByIndex(selected, colorDialog.Color);
             }
+
             UpdateListOfStints();
         }
 
@@ -65,9 +91,11 @@ namespace cbattery
             if (ListOfStints.SelectedIndex != -1)
             {
                 _currentSelected = ListOfStints.SelectedIndex;
-                ButtonColorPicker.BackColor = _manager.Stints[ListOfStints.SelectedIndex].Color;
+                var color = _manager.Stints[ListOfStints.SelectedIndex].Color;
+                ButtonColorPicker.BackColor = Color.FromArgb(color.A / 2, color.R, color.G, color.B);
                 UpDownPercent.Value = _manager.Stints[ListOfStints.SelectedIndex].Percent;
-            } 
+            }
+
             ListOfStints.SelectedIndex = _currentSelected;
         }
 
@@ -85,25 +113,47 @@ namespace cbattery
 
         private void UpDownPercent_ValueChanged(object sender, EventArgs e)
         {
-            _manager.ChangeStintByIndex(ListOfStints.SelectedIndex, (int)UpDownPercent.Value);
+            _manager.ChangeStintByIndex(ListOfStints.SelectedIndex, (int) UpDownPercent.Value);
             UpdateListOfStints();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
+            _batteryStatus.Update();
+            
+            BatteryInfoTextBox.Text = _batteryStatus.ToString();
+
             if (CheckBoxFromBattery.Checked)
             {
-                var batteryInfo = BatteryStatus.GetBatteryInfo();
-                var percentf = Math.Floor((float)batteryInfo.CurrentCapacity * 100 / batteryInfo.FullChargeCapacity);
-                var percent = Convert.ToSByte(percentf);
-                UpdateIcon(percent);
-                TrayIcon.Text = BatteryStatus.GetStringInfo();
+                _lastPercent = _batteryStatus.Percent;
+                UpdateIcon(_batteryStatus.Percent);
+                
+                var tray = "cBattery";
+                if (CheckP.Checked)
+                    tray += '\n' + _batteryStatus.GetPercent(false);
+                if (CheckC.Checked) 
+                    tray += '\n' + _batteryStatus.GetCapacity(false);
+                if (CheckV.Checked)
+                    tray += '\n' + _batteryStatus.GetVoltage(false);
+                if (CheckW.Checked)
+                    tray += '\n' + _batteryStatus.GetWear(false);
+                if (CheckD.Checked)
+                    tray += '\n' + _batteryStatus.GetDischarge(false);
+                if (CheckT.Checked)
+                    tray += '\n' + _batteryStatus.GetTimeEst(false);
+                if (CheckS.Checked)
+                    tray += '\n' + _batteryStatus.GetTimeEnd(false);
+
+                if (tray.Length > 64)
+                    tray = "64 characters limit reached\nDeselect some values";
+
+                TrayIcon.Text = tray;
             }
         }
 
         
         [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = CharSet.Auto)]
-        extern static bool DestroyIcon(IntPtr handle);
+        private static extern bool DestroyIcon(IntPtr handle);
         private void UpdateIcon(int percent)
         {
             var icon = _manager.GetIconByPercent(percent);
@@ -134,7 +184,7 @@ namespace cbattery
                 e.Cancel = true;
             }
             else
-                TrayIcon.Visible = false;
+                TrayIcon.Dispose();
         }
 
         private void ButtonQuit_Click(object sender, EventArgs e)
@@ -145,11 +195,25 @@ namespace cbattery
         
         private void SaveForExit()
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream("manager_data", FileMode.OpenOrCreate))
+            var formatter = new BinaryFormatter();
+            _userData.TrayTextChecks.P = CheckP.Checked;
+            _userData.TrayTextChecks.C = CheckC.Checked;
+            _userData.TrayTextChecks.V = CheckV.Checked;
+            _userData.TrayTextChecks.W = CheckW.Checked;
+            _userData.TrayTextChecks.D = CheckD.Checked;
+            _userData.TrayTextChecks.T = CheckT.Checked;
+            _userData.TrayTextChecks.S = CheckS.Checked;
+            using (var fs = new FileStream("UserData", FileMode.OpenOrCreate))
             {
-                formatter.Serialize(fs, _manager);
+                var sw = new StreamWriter(fs);
+                sw.Write(JsonConvert.SerializeObject(_userData));
+                sw.Close();
             }   
+        }
+        
+        private void UpdateRateSelector_ValueChanged(object sender, EventArgs e)
+        {
+            Timer.Interval = (int)UpdateRateSelector.Value;
         }
     }
 }

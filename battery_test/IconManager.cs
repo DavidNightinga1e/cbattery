@@ -16,10 +16,14 @@ namespace cbattery
 
         public IconManager()
         {
-            Stints = new List<ColorStintData>
-            {
-                new ColorStintData() {Color = Color.White, TextColor = Color.White, Percent = 0}
-            };
+            Stints = new List<ColorStintData>();
+        }
+
+        public IconManager New()
+        {
+            var im = new IconManager();
+            im.AddStint();
+            return im;
         }
 
         /// <summary>

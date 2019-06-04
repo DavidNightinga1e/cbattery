@@ -1,10 +1,15 @@
-C:\Users\Nightingale\RiderProjects\battery_test\battery_test\bin\Debug\battery_test.exe.config
-C:\Users\Nightingale\RiderProjects\battery_test\battery_test\bin\Debug\battery_test.exe
-C:\Users\Nightingale\RiderProjects\battery_test\battery_test\bin\Debug\battery_test.pdb
 C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Debug\battery_test.csprojAssemblyReference.cache
-C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Debug\battery_test.Properties.Resources.resources
 C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Debug\battery_test.csproj.GenerateResource.cache
 C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Debug\battery_test.csproj.CoreCompileInputs.cache
-C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Debug\battery_test.exe
-C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Debug\battery_test.pdb
-C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Debug\battery_test.Configurator.resources
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\bin\Debug\cBattery v0.1.exe.config
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\bin\Debug\cBattery v0.1.exe
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\bin\Debug\cBattery v0.1.pdb
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\bin\Debug\BatteryInfo.dll
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\bin\Debug\BatteryInfo.pdb
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Debug\cbattery.Configurator.resources
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Debug\cbattery.Properties.Resources.resources
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Debug\battery_test.csproj.CopyComplete
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Debug\cBattery v0.1.exe
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\obj\Debug\cBattery v0.1.pdb
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Nightingale\RiderProjects\battery_test\battery_test\bin\Debug\Newtonsoft.Json.xml
