@@ -15,7 +15,6 @@ namespace cbattery
         private readonly BatteryStatus _batteryStatus;
         private readonly IconManager _manager;
         private int _currentSelected;
-        private int _lastPercent;
 
         public Configurator()
         {
@@ -32,7 +31,7 @@ namespace cbattery
             }
             catch
             {
-                _userData = new UserData();
+                _userData = new UserData {IconManager = IconManager.New()};
             }
 
             _batteryStatus = new BatteryStatus();
@@ -41,7 +40,6 @@ namespace cbattery
             UpdateListOfStints();
             Timer.Enabled = true;
             _batteryStatus.Update();
-            _lastPercent = 101;
         }
 
         private void UpdateChecks()
@@ -119,13 +117,12 @@ namespace cbattery
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            _batteryStatus.Update();
-            
-            BatteryInfoTextBox.Text = _batteryStatus.ToString();
-
-            if (CheckBoxFromBattery.Checked)
+            if (!CheckBoxTest.Checked)
             {
-                _lastPercent = _batteryStatus.Percent;
+                _batteryStatus.Update();
+            
+                BatteryInfoTextBox.Text = _batteryStatus.ToString();
+
                 UpdateIcon(_batteryStatus.Percent);
                 
                 var tray = "cBattery";
@@ -195,7 +192,6 @@ namespace cbattery
         
         private void SaveForExit()
         {
-            var formatter = new BinaryFormatter();
             _userData.TrayTextChecks.P = CheckP.Checked;
             _userData.TrayTextChecks.C = CheckC.Checked;
             _userData.TrayTextChecks.V = CheckV.Checked;
@@ -214,6 +210,16 @@ namespace cbattery
         private void UpdateRateSelector_ValueChanged(object sender, EventArgs e)
         {
             Timer.Interval = (int)UpdateRateSelector.Value;
+        }
+
+        private void CheckBoxTest_CheckedChanged(object sender, EventArgs e)
+        {
+            TrackBarTester.Enabled = CheckBoxTest.Checked;
+            if (CheckBoxTest.Checked == true)
+            {
+                TrayIcon.Icon = Icon;
+                TrayIcon.Text = "cBattery\nIcon test mode";
+            }
         }
     }
 }

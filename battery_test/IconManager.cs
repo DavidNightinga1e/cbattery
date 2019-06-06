@@ -19,7 +19,7 @@ namespace cbattery
             Stints = new List<ColorStintData>();
         }
 
-        public IconManager New()
+        public static IconManager New()
         {
             var im = new IconManager();
             im.AddStint();
