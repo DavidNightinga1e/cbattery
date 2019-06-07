@@ -42,7 +42,7 @@
             this.ButtonRemoveStint = new System.Windows.Forms.Button();
             this.ButtonAddStint = new System.Windows.Forms.Button();
             this.CheckBoxTest = new System.Windows.Forms.CheckBox();
-            this.Timer = new System.Windows.Forms.Timer(this.components);
+            this.IconTimer = new System.Windows.Forms.Timer(this.components);
             this.ButtonQuit = new System.Windows.Forms.Button();
             this.BatteryInfoTextBox = new System.Windows.Forms.RichTextBox();
             this.LabelUpdateRate = new System.Windows.Forms.Label();
@@ -54,10 +54,27 @@
             this.CheckD = new System.Windows.Forms.CheckBox();
             this.CheckT = new System.Windows.Forms.CheckBox();
             this.CheckS = new System.Windows.Forms.CheckBox();
+            this.ButtonOffsetUp = new System.Windows.Forms.Button();
+            this.ButtonOffsetLeft = new System.Windows.Forms.Button();
+            this.ButtonOffsetRight = new System.Windows.Forms.Button();
+            this.ButtonOffsetDown = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.UpDownBottomLineWidth = new System.Windows.Forms.NumericUpDown();
+            this.TrackBarBottomLineAlpha = new System.Windows.Forms.TrackBar();
+            this.label3 = new System.Windows.Forms.Label();
             this.TrayMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBarTester)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownPercent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpdateRateSelector)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownBottomLineWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBarBottomLineAlpha)).BeginInit();
             this.SuspendLayout();
             // 
             // TrayIcon
@@ -92,7 +109,7 @@
             // ListOfStints
             // 
             this.ListOfStints.FormattingEnabled = true;
-            this.ListOfStints.Location = new System.Drawing.Point(11, 10);
+            this.ListOfStints.Location = new System.Drawing.Point(6, 16);
             this.ListOfStints.Name = "ListOfStints";
             this.ListOfStints.Size = new System.Drawing.Size(127, 160);
             this.ListOfStints.TabIndex = 0;
@@ -101,7 +118,7 @@
             // TrackBarTester
             // 
             this.TrackBarTester.Enabled = false;
-            this.TrackBarTester.Location = new System.Drawing.Point(150, 92);
+            this.TrackBarTester.Location = new System.Drawing.Point(145, 98);
             this.TrackBarTester.Maximum = 100;
             this.TrackBarTester.Name = "TrackBarTester";
             this.TrackBarTester.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -114,7 +131,7 @@
             // ButtonColorPicker
             // 
             this.ButtonColorPicker.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ButtonColorPicker.Location = new System.Drawing.Point(143, 37);
+            this.ButtonColorPicker.Location = new System.Drawing.Point(139, 43);
             this.ButtonColorPicker.Name = "ButtonColorPicker";
             this.ButtonColorPicker.Size = new System.Drawing.Size(69, 22);
             this.ButtonColorPicker.TabIndex = 2;
@@ -124,7 +141,7 @@
             // 
             // UpDownPercent
             // 
-            this.UpDownPercent.Location = new System.Drawing.Point(143, 10);
+            this.UpDownPercent.Location = new System.Drawing.Point(138, 16);
             this.UpDownPercent.Name = "UpDownPercent";
             this.UpDownPercent.Size = new System.Drawing.Size(69, 20);
             this.UpDownPercent.TabIndex = 3;
@@ -134,7 +151,7 @@
             // 
             this.ButtonRemoveStint.BackColor = System.Drawing.Color.LavenderBlush;
             this.ButtonRemoveStint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ButtonRemoveStint.Location = new System.Drawing.Point(58, 179);
+            this.ButtonRemoveStint.Location = new System.Drawing.Point(52, 185);
             this.ButtonRemoveStint.Name = "ButtonRemoveStint";
             this.ButtonRemoveStint.Size = new System.Drawing.Size(41, 20);
             this.ButtonRemoveStint.TabIndex = 4;
@@ -146,7 +163,7 @@
             // 
             this.ButtonAddStint.BackColor = System.Drawing.Color.Honeydew;
             this.ButtonAddStint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ButtonAddStint.Location = new System.Drawing.Point(10, 179);
+            this.ButtonAddStint.Location = new System.Drawing.Point(5, 185);
             this.ButtonAddStint.Name = "ButtonAddStint";
             this.ButtonAddStint.Size = new System.Drawing.Size(41, 20);
             this.ButtonAddStint.TabIndex = 5;
@@ -156,7 +173,7 @@
             // 
             // CheckBoxTest
             // 
-            this.CheckBoxTest.Location = new System.Drawing.Point(150, 65);
+            this.CheckBoxTest.Location = new System.Drawing.Point(145, 71);
             this.CheckBoxTest.Name = "CheckBoxTest";
             this.CheckBoxTest.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.CheckBoxTest.Size = new System.Drawing.Size(52, 21);
@@ -165,16 +182,16 @@
             this.CheckBoxTest.UseVisualStyleBackColor = true;
             this.CheckBoxTest.CheckedChanged += new System.EventHandler(this.CheckBoxTest_CheckedChanged);
             // 
-            // Timer
+            // IconTimer
             // 
-            this.Timer.Interval = 500;
-            this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
+            this.IconTimer.Interval = 300;
+            this.IconTimer.Tick += new System.EventHandler(this.IconTimer_Tick);
             // 
             // ButtonQuit
             // 
             this.ButtonQuit.BackColor = System.Drawing.Color.LightCoral;
             this.ButtonQuit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ButtonQuit.Location = new System.Drawing.Point(369, 10);
+            this.ButtonQuit.Location = new System.Drawing.Point(389, 311);
             this.ButtonQuit.Name = "ButtonQuit";
             this.ButtonQuit.Size = new System.Drawing.Size(63, 20);
             this.ButtonQuit.TabIndex = 8;
@@ -184,7 +201,7 @@
             // 
             // BatteryInfoTextBox
             // 
-            this.BatteryInfoTextBox.Location = new System.Drawing.Point(218, 36);
+            this.BatteryInfoTextBox.Location = new System.Drawing.Point(6, 40);
             this.BatteryInfoTextBox.Name = "BatteryInfoTextBox";
             this.BatteryInfoTextBox.Size = new System.Drawing.Size(145, 158);
             this.BatteryInfoTextBox.TabIndex = 9;
@@ -192,7 +209,7 @@
             // 
             // LabelUpdateRate
             // 
-            this.LabelUpdateRate.Location = new System.Drawing.Point(218, 12);
+            this.LabelUpdateRate.Location = new System.Drawing.Point(6, 16);
             this.LabelUpdateRate.Name = "LabelUpdateRate";
             this.LabelUpdateRate.Size = new System.Drawing.Size(82, 20);
             this.LabelUpdateRate.TabIndex = 10;
@@ -205,7 +222,7 @@
             0,
             0,
             0});
-            this.UpdateRateSelector.Location = new System.Drawing.Point(304, 10);
+            this.UpdateRateSelector.Location = new System.Drawing.Point(92, 14);
             this.UpdateRateSelector.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -230,7 +247,7 @@
             // 
             this.CheckP.Checked = true;
             this.CheckP.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckP.Location = new System.Drawing.Point(368, 37);
+            this.CheckP.Location = new System.Drawing.Point(172, 41);
             this.CheckP.Name = "CheckP";
             this.CheckP.Size = new System.Drawing.Size(29, 21);
             this.CheckP.TabIndex = 12;
@@ -241,7 +258,7 @@
             // 
             this.CheckC.Checked = true;
             this.CheckC.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckC.Location = new System.Drawing.Point(368, 55);
+            this.CheckC.Location = new System.Drawing.Point(172, 59);
             this.CheckC.Name = "CheckC";
             this.CheckC.Size = new System.Drawing.Size(29, 21);
             this.CheckC.TabIndex = 13;
@@ -252,7 +269,7 @@
             // 
             this.CheckV.Checked = true;
             this.CheckV.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckV.Location = new System.Drawing.Point(368, 73);
+            this.CheckV.Location = new System.Drawing.Point(172, 77);
             this.CheckV.Name = "CheckV";
             this.CheckV.Size = new System.Drawing.Size(29, 21);
             this.CheckV.TabIndex = 15;
@@ -263,7 +280,7 @@
             // 
             this.CheckW.Checked = true;
             this.CheckW.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckW.Location = new System.Drawing.Point(368, 91);
+            this.CheckW.Location = new System.Drawing.Point(172, 95);
             this.CheckW.Name = "CheckW";
             this.CheckW.Size = new System.Drawing.Size(37, 21);
             this.CheckW.TabIndex = 14;
@@ -274,7 +291,7 @@
             // 
             this.CheckD.Checked = true;
             this.CheckD.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckD.Location = new System.Drawing.Point(368, 109);
+            this.CheckD.Location = new System.Drawing.Point(172, 113);
             this.CheckD.Name = "CheckD";
             this.CheckD.Size = new System.Drawing.Size(29, 21);
             this.CheckD.TabIndex = 18;
@@ -285,7 +302,7 @@
             // 
             this.CheckT.Checked = true;
             this.CheckT.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckT.Location = new System.Drawing.Point(368, 127);
+            this.CheckT.Location = new System.Drawing.Point(172, 131);
             this.CheckT.Name = "CheckT";
             this.CheckT.Size = new System.Drawing.Size(29, 21);
             this.CheckT.TabIndex = 17;
@@ -296,36 +313,166 @@
             // 
             this.CheckS.Checked = true;
             this.CheckS.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckS.Location = new System.Drawing.Point(368, 145);
+            this.CheckS.Location = new System.Drawing.Point(172, 149);
             this.CheckS.Name = "CheckS";
             this.CheckS.Size = new System.Drawing.Size(29, 21);
             this.CheckS.TabIndex = 16;
             this.CheckS.Text = "S";
             this.CheckS.UseVisualStyleBackColor = true;
             // 
+            // ButtonOffsetUp
+            // 
+            this.ButtonOffsetUp.Location = new System.Drawing.Point(41, 18);
+            this.ButtonOffsetUp.Name = "ButtonOffsetUp";
+            this.ButtonOffsetUp.Size = new System.Drawing.Size(24, 24);
+            this.ButtonOffsetUp.TabIndex = 19;
+            this.ButtonOffsetUp.Text = "↑";
+            this.ButtonOffsetUp.UseVisualStyleBackColor = true;
+            this.ButtonOffsetUp.Click += new System.EventHandler(this.ButtonOffsetUp_Click);
+            // 
+            // ButtonOffsetLeft
+            // 
+            this.ButtonOffsetLeft.Location = new System.Drawing.Point(11, 48);
+            this.ButtonOffsetLeft.Name = "ButtonOffsetLeft";
+            this.ButtonOffsetLeft.Size = new System.Drawing.Size(24, 24);
+            this.ButtonOffsetLeft.TabIndex = 20;
+            this.ButtonOffsetLeft.Text = "←";
+            this.ButtonOffsetLeft.UseVisualStyleBackColor = true;
+            this.ButtonOffsetLeft.Click += new System.EventHandler(this.ButtonOffsetLeft_Click);
+            // 
+            // ButtonOffsetRight
+            // 
+            this.ButtonOffsetRight.Location = new System.Drawing.Point(71, 48);
+            this.ButtonOffsetRight.Name = "ButtonOffsetRight";
+            this.ButtonOffsetRight.Size = new System.Drawing.Size(24, 24);
+            this.ButtonOffsetRight.TabIndex = 21;
+            this.ButtonOffsetRight.Text = "→";
+            this.ButtonOffsetRight.UseVisualStyleBackColor = true;
+            this.ButtonOffsetRight.Click += new System.EventHandler(this.ButtonOffsetRight_Click);
+            // 
+            // ButtonOffsetDown
+            // 
+            this.ButtonOffsetDown.Location = new System.Drawing.Point(41, 76);
+            this.ButtonOffsetDown.Name = "ButtonOffsetDown";
+            this.ButtonOffsetDown.Size = new System.Drawing.Size(24, 24);
+            this.ButtonOffsetDown.TabIndex = 22;
+            this.ButtonOffsetDown.Text = "↓";
+            this.ButtonOffsetDown.UseVisualStyleBackColor = true;
+            this.ButtonOffsetDown.Click += new System.EventHandler(this.ButtonOffsetDown_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.ListOfStints);
+            this.groupBox1.Controls.Add(this.TrackBarTester);
+            this.groupBox1.Controls.Add(this.ButtonColorPicker);
+            this.groupBox1.Controls.Add(this.UpDownPercent);
+            this.groupBox1.Controls.Add(this.ButtonRemoveStint);
+            this.groupBox1.Controls.Add(this.ButtonAddStint);
+            this.groupBox1.Controls.Add(this.CheckBoxTest);
+            this.groupBox1.Location = new System.Drawing.Point(12, 17);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(215, 213);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Color Stints";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.LabelUpdateRate);
+            this.groupBox2.Controls.Add(this.BatteryInfoTextBox);
+            this.groupBox2.Controls.Add(this.UpdateRateSelector);
+            this.groupBox2.Controls.Add(this.CheckP);
+            this.groupBox2.Controls.Add(this.CheckC);
+            this.groupBox2.Controls.Add(this.CheckW);
+            this.groupBox2.Controls.Add(this.CheckV);
+            this.groupBox2.Controls.Add(this.CheckD);
+            this.groupBox2.Controls.Add(this.CheckS);
+            this.groupBox2.Controls.Add(this.CheckT);
+            this.groupBox2.Location = new System.Drawing.Point(233, 17);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(219, 213);
+            this.groupBox2.TabIndex = 24;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Battery Info";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(156, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "To Tray:";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.TrackBarBottomLineAlpha);
+            this.groupBox3.Controls.Add(this.UpDownBottomLineWidth);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.ButtonOffsetRight);
+            this.groupBox3.Controls.Add(this.ButtonOffsetUp);
+            this.groupBox3.Controls.Add(this.ButtonOffsetLeft);
+            this.groupBox3.Controls.Add(this.ButtonOffsetDown);
+            this.groupBox3.Location = new System.Drawing.Point(12, 236);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(215, 111);
+            this.groupBox3.TabIndex = 25;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Icon Offset";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(105, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 13);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Bottom Line Width";
+            // 
+            // UpDownBottomLineWidth
+            // 
+            this.UpDownBottomLineWidth.Location = new System.Drawing.Point(108, 32);
+            this.UpDownBottomLineWidth.Maximum = new decimal(new int[] {
+            32,
+            0,
+            0,
+            0});
+            this.UpDownBottomLineWidth.Name = "UpDownBottomLineWidth";
+            this.UpDownBottomLineWidth.Size = new System.Drawing.Size(89, 20);
+            this.UpDownBottomLineWidth.TabIndex = 20;
+            this.UpDownBottomLineWidth.ValueChanged += new System.EventHandler(this.NumericUpDown1_ValueChanged);
+            // 
+            // TrackBarBottomLineAlpha
+            // 
+            this.TrackBarBottomLineAlpha.Location = new System.Drawing.Point(108, 60);
+            this.TrackBarBottomLineAlpha.Maximum = 255;
+            this.TrackBarBottomLineAlpha.Name = "TrackBarBottomLineAlpha";
+            this.TrackBarBottomLineAlpha.Size = new System.Drawing.Size(82, 45);
+            this.TrackBarBottomLineAlpha.TabIndex = 26;
+            this.TrackBarBottomLineAlpha.TickFrequency = 90;
+            this.TrackBarBottomLineAlpha.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.TrackBarBottomLineAlpha.Scroll += new System.EventHandler(this.TrackBarBottomLineAlpha_Scroll);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(115, 92);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 13);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Transparancy";
+            // 
             // Configurator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 206);
-            this.Controls.Add(this.CheckD);
-            this.Controls.Add(this.CheckT);
-            this.Controls.Add(this.CheckS);
-            this.Controls.Add(this.CheckV);
-            this.Controls.Add(this.CheckW);
-            this.Controls.Add(this.CheckC);
-            this.Controls.Add(this.CheckP);
-            this.Controls.Add(this.UpdateRateSelector);
-            this.Controls.Add(this.LabelUpdateRate);
-            this.Controls.Add(this.BatteryInfoTextBox);
+            this.ClientSize = new System.Drawing.Size(468, 359);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ButtonQuit);
-            this.Controls.Add(this.CheckBoxTest);
-            this.Controls.Add(this.ButtonAddStint);
-            this.Controls.Add(this.ButtonRemoveStint);
-            this.Controls.Add(this.UpDownPercent);
-            this.Controls.Add(this.ButtonColorPicker);
-            this.Controls.Add(this.TrackBarTester);
-            this.Controls.Add(this.ListOfStints);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -337,8 +484,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.TrackBarTester)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpDownPercent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UpdateRateSelector)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpDownBottomLineWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TrackBarBottomLineAlpha)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -351,7 +505,7 @@
         private System.Windows.Forms.Button ButtonRemoveStint;
         private System.Windows.Forms.Button ButtonAddStint;
         private System.Windows.Forms.CheckBox CheckBoxTest;
-        private System.Windows.Forms.Timer Timer;
+        private System.Windows.Forms.Timer IconTimer;
         private System.Windows.Forms.ContextMenuStrip TrayMenu;
         private System.Windows.Forms.ToolStripMenuItem OpenConfiguratorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem QuitProgramToolStripMenuItem;
@@ -367,5 +521,17 @@
         private System.Windows.Forms.CheckBox CheckT;
         private System.Windows.Forms.CheckBox CheckS;
         private System.Windows.Forms.NotifyIcon TrayIcon;
+        private System.Windows.Forms.Button ButtonOffsetUp;
+        private System.Windows.Forms.Button ButtonOffsetLeft;
+        private System.Windows.Forms.Button ButtonOffsetRight;
+        private System.Windows.Forms.Button ButtonOffsetDown;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.NumericUpDown UpDownBottomLineWidth;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TrackBar TrackBarBottomLineAlpha;
+        private System.Windows.Forms.Label label3;
     }
 }

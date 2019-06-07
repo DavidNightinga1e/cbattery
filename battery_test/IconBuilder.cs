@@ -18,10 +18,14 @@ namespace cbattery
         public Size IconSize { private set; get; }
         public int TextXOffset { set; get; }
         public int TextYOffset { set; get; }
+        public int BottomLineHeight { get; set; }
+        public int BottomLineAlpha { get; set; }
         private Bitmap Bmp;
         
         public IconBuilder()
         {
+            BottomLineAlpha = 255;
+            BottomLineHeight = 1;
             TextXOffset = -4;
             TextYOffset = -2;
             IconSize =  SystemInformation.SmallIconSize;
@@ -32,12 +36,12 @@ namespace cbattery
         {
             using (Graphics g = Graphics.FromImage(Bmp))
             {
-                using (SolidBrush brush = new SolidBrush(bottomColor))
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(BottomLineAlpha, bottomColor.R, bottomColor.G, bottomColor.B)))
                 {
                     // Yeah, width and height is too much
                     g.FillRectangle(brush, 
                         0, 
-                        Bmp.Height - 1 * (Bmp.Height / 16), 
+                        Bmp.Height - BottomLineHeight, 
                         Bmp.Width, 
                         Bmp.Height);    
                 }

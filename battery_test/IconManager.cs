@@ -13,10 +13,12 @@ namespace cbattery
     public class IconManager
     {
         public List<ColorStintData> Stints { get; }
+        public IconBuilder IconBuilder { private set; get; }
 
         public IconManager()
         {
             Stints = new List<ColorStintData>();
+            IconBuilder = new IconBuilder();
         }
 
         public static IconManager New()
@@ -78,11 +80,12 @@ namespace cbattery
             var colorStint = GetColorStintByPercent(percent);
             if (!colorStint.Equals(null))
             {
-                var iconBuilder = new IconBuilder();
                 var percentStr = percent == 100 ? "F" : percent.ToString("00");
-                iconBuilder.SetString(colorStint.TextColor, percentStr, IconBuilderTextSizes.Double);
-                iconBuilder.SetBottomColor(colorStint.Color);
-                return iconBuilder.Build();
+                IconBuilder.SetString(colorStint.TextColor, percentStr, IconBuilderTextSizes.Double);
+                IconBuilder.SetBottomColor(colorStint.Color);
+                var icon = IconBuilder.Build();
+                IconBuilder.Clear();
+                return icon;
             }
             else
             {
@@ -129,7 +132,8 @@ namespace cbattery
 
         public override string ToString()
         {
-            return $"{Percent}% | {Color.ToString()}";
+            var color = Color.IsNamedColor ? Color.Name : $"A{Color.A}R{Color.R}G{Color.G}B{Color.B}";
+            return $"{Percent}% | {color}";
         }
     }
 }

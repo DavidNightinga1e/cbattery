@@ -5,6 +5,7 @@ namespace cbattery
     [Serializable]
     public class UserData
     {
+        public string Name { set; get; }
         public IconManager IconManager;
         public TrayTextChecks TrayTextChecks;
 
